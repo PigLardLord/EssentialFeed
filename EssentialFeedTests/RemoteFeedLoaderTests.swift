@@ -21,7 +21,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
         let url = URL(string: "a-given-url")!
         let (sut, client) = makeSut()
     
-        sut.load { _ in }
+        sut.load { (_, _) in }
         
         XCTAssertEqual(client.requestedUrls, [url])
     }
@@ -30,8 +30,8 @@ final class RemoteFeedLoaderTests: XCTestCase {
         let url = URL(string: "a-given-url")!
         let (sut, client) = makeSut()
     
-        sut.load { _ in }
-        sut.load { _ in }
+        sut.load { (_, _) in }
+        sut.load { (_, _) in }
         
         XCTAssertEqual(client.requestedUrls, [url, url])
     }
@@ -40,12 +40,23 @@ final class RemoteFeedLoaderTests: XCTestCase {
         let (sut, client) = makeSut()
         var capturedError: RemoteFeedLoader.Error?
         
-        sut.load { error in capturedError = error }
+        sut.load { (error,_) in capturedError = error }
         
         let error = NSError(domain: "Test", code: 0)
         client.complete(with: error)
             
         XCTAssertEqual(capturedError, .connectivity)
+    }
+    
+    func test_load_deliversErrorOnNot200HttpResponse() {
+        let (sut, client) = makeSut()
+        var capturedError: RemoteFeedLoader.Error?
+        
+        sut.load { (error,_) in capturedError = error }
+        
+        client.complete(withStatusCode: 400)
+            
+        XCTAssertEqual(capturedError, .invalidData)
     }
     
     //MARK - heplers
@@ -56,8 +67,10 @@ final class RemoteFeedLoaderTests: XCTestCase {
         return (sut, client)
     }
     
-    private class HttpClientSpy: HttpClient{
-        var messages: [(url: URL, completion: (Error) -> Void)] = []
+    private class HttpClientSpy: HttpClient {
+       
+        
+        var messages: [(url: URL, completion: (Error?, HTTPURLResponse?) -> Void)] = []
         
         var requestedUrls: [URL] {
             return messages.map {
@@ -65,12 +78,23 @@ final class RemoteFeedLoaderTests: XCTestCase {
             }
         }
         
-        func get(from url: URL, completion: @escaping (Error) -> Void){
+        func get(from url: URL, completion: @escaping (Error?, HTTPURLResponse?) -> Void) {
             messages.append((url, completion))
         }
         
         func complete(with error: Error, at index: Int = 0) {
-            messages[index].completion(error)
+            messages[index].completion(error, nil)
+        }
+        
+        func complete(withStatusCode code: Int, at index: Int = 0) {
+            let response =  HTTPURLResponse(
+                url: requestedUrls[index],
+                statusCode: code,
+                httpVersion: nil,
+                headerFields: nil
+            )
+            
+            messages[index].completion(nil, response)
         }
     }
 }
