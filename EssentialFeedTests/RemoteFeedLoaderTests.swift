@@ -54,9 +54,12 @@ final class RemoteFeedLoaderTests: XCTestCase {
         
         sut.load { (error,_) in capturedError = error }
         
-        client.complete(withStatusCode: 400)
-            
-        XCTAssertEqual(capturedError, .invalidData)
+        let samples = [199, 201, 300, 400, 500]
+        
+        samples.forEach { status in
+            client.complete(withStatusCode: status)
+            XCTAssertEqual(capturedError, .invalidData)
+        }
     }
     
     //MARK - heplers
