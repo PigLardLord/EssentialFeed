@@ -22,16 +22,21 @@ public final class RemoteFeedLoader {
     }
     
     public func load(completion: @escaping (Error) -> Void){
-        client.get(from: url) { (error, response ) in
-            if response != nil {
-                completion(.invalidData)
-                return
+        client.get(from: url) { result in
+            switch result{
+                case .success:
+                    completion(.invalidData)
+                case .failure:
+                    completion(.connectivity)
             }
-            completion(.connectivity)
         }
     }
 }
 
+// MARK - interface
+
+public typealias HttpClientResult = Result<HTTPURLResponse, Error>
+
 public protocol HttpClient {
-    func get(from url: URL, completion: @escaping (Error?, HTTPURLResponse?) -> Void)
+    func get(from url: URL, completion: @escaping (HttpClientResult) -> Void)
 }
