@@ -91,24 +91,22 @@ final class RemoteFeedLoaderTests: XCTestCase {
             image: URL(string: "https://another_image.jpg")!
         )
         
-        let payload = """
-            {"items": [
-                    {
-                        "id": "\(item1.id.uuidString)",
-                        "image": "\(item1.image.absoluteString)"
-                    },
-                    {
-                        "id": "\(item2.id.uuidString)",
-                        "description": "\(item2.description!)",
-                        "location": "\(item2.location!)",
-                        "image": "\(item2.image.absoluteString)",
-                    }
-                ]
-            }
-            """
+        let item1Json = [
+            "id" : item1.id.uuidString,
+            "image" : item1.image.absoluteString
+        ]
+        
+        let item2Json = [
+            "id" : item2.id.uuidString,
+            "description" : item2.description!,
+            "location" : item2.location!,
+            "image" : item2.image.absoluteString
+        ]
+        
+        let payload = ["items": [item1Json, item2Json]]
         
         expect(sut, toCompleteWith: .success([item1, item2])) {
-            let jsonData = Data(payload.utf8)
+            let jsonData = try! JSONSerialization.data(withJSONObject: payload)
             client.complete(withStatusCode: 200, data: jsonData)
         }
     }
