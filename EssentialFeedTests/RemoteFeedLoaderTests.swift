@@ -74,6 +74,46 @@ final class RemoteFeedLoaderTests: XCTestCase {
         }
     }
     
+    func test_load_deliversFeedItemsOn200HTTPResponseWithJsonContainingItems() {
+        let (sut, client) = makeSut()
+        
+        let item1 = FeedItem(
+            id: UUID(),
+            description: nil,
+            location: nil,
+            image: URL(string: "https://an_image.jpg")!
+        )
+         
+        let item2 = FeedItem(
+            id: UUID(),
+            description: "a description",
+            location: "a location",
+            image: URL(string: "https://another_image.jpg")!
+        )
+        
+        let payload = """
+            {"items": [
+                    {
+                        "id": "\(item1.id.uuidString)",
+                        "image": "\(item1.image.absoluteString)"
+                    },
+                    {
+                        "id": "\(item2.id.uuidString)",
+                        "description": "\(item2.description!)",
+                        "location": "\(item2.location!)",
+                        "image": "\(item2.image.absoluteString)",
+                    }
+                ]
+            }
+            """
+        
+        expect(sut, toCompleteWith: .success([item1, item2])) {
+            let jsonData = Data(payload.utf8)
+            client.complete(withStatusCode: 200, data: jsonData)
+        }
+    }
+    
+    
     //MARK - heplers
     
     private func makeSut(url: URL = URL(string: "a-given-url")!) -> (sut:RemoteFeedLoader, client: HttpClientSpy) {

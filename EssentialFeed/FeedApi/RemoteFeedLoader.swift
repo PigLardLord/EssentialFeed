@@ -27,8 +27,9 @@ public final class RemoteFeedLoader {
         client.get(from: url) { result in
             switch result{
                 case .success(( _ , let data)):
-                    if let _ = try? JSONSerialization.jsonObject(with: data){
-                        completion(.success([]))
+                    let decoder = JSONDecoder()
+                    if let root = try? decoder.decode(RootNode.self, from: data){
+                        completion(.success(root.items))
                     } else {
                         completion(.failure(.invalidData))
                     }
@@ -37,7 +38,13 @@ public final class RemoteFeedLoader {
             }
         }
     }
+    
+    private struct RootNode: Decodable {
+        var items: [FeedItem]
+    }
 }
+
+
 
 // MARK - interface
 public typealias HttpClientResult = Result<(HTTPURLResponse, Data), Error>
