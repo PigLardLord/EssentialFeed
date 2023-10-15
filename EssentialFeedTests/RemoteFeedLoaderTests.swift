@@ -65,6 +65,15 @@ final class RemoteFeedLoaderTests: XCTestCase {
         }
     }
     
+    func test_load_deliversnoItemsOn200HTTPResponseWithEmptyJson() {
+        let (sut, client) = makeSut()
+        
+        expect(sut, toCompleteWith: .success([])) {
+            let emptyJson = Data("{\"items\": []}".utf8)
+            client.complete(withStatusCode: 200, data: emptyJson)
+        }
+    }
+    
     //MARK - heplers
     
     private func makeSut(url: URL = URL(string: "a-given-url")!) -> (sut:RemoteFeedLoader, client: HttpClientSpy) {
