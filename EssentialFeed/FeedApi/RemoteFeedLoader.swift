@@ -71,10 +71,3 @@ private class FeedItemsMapper {
         return root.items.map{ $0.item }
     }
 }
-
-// MARK - interface
-public typealias HttpClientResult = Result<(HTTPURLResponse, Data), Error>
-
-public protocol HttpClient {
-    func get(from url: URL, completion: @escaping (HttpClientResult) -> Void)
-}
