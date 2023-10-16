@@ -13,6 +13,7 @@
 		239A1B682AD70DF8006C98E2 /* RemoteFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239A1B672AD70DF8006C98E2 /* RemoteFeedLoaderTests.swift */; };
 		239A1B6B2AD81BB6006C98E2 /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239A1B6A2AD81BB6006C98E2 /* RemoteFeedLoader.swift */; };
 		23D1A35B2ADDB0B400D9768E /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1A35A2ADDB0B400D9768E /* HttpClient.swift */; };
+		23D1A35D2ADDB15800D9768E /* FeedItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1A35C2ADDB15800D9768E /* FeedItemMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		239A1B672AD70DF8006C98E2 /* RemoteFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoaderTests.swift; sourceTree = "<group>"; };
 		239A1B6A2AD81BB6006C98E2 /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
 		23D1A35A2ADDB0B400D9768E /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		23D1A35C2ADDB15800D9768E /* FeedItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			children = (
 				239A1B6A2AD81BB6006C98E2 /* RemoteFeedLoader.swift */,
 				23D1A35A2ADDB0B400D9768E /* HttpClient.swift */,
+				23D1A35C2ADDB15800D9768E /* FeedItemMapper.swift */,
 			);
 			path = FeedApi;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				239A1B642AD706C0006C98E2 /* FeedLoader.swift in Sources */,
+				23D1A35D2ADDB15800D9768E /* FeedItemMapper.swift in Sources */,
 				239A1B6B2AD81BB6006C98E2 /* RemoteFeedLoader.swift in Sources */,
 				23D1A35B2ADDB0B400D9768E /* HttpClient.swift in Sources */,
 				239A1B622AD70153006C98E2 /* FeedItem.swift in Sources */,
