@@ -51,7 +51,8 @@ final class RemoteFeedLoaderTests: XCTestCase {
         
         samples.enumerated().forEach { (index,status) in
             expect(sut, toCompleteWith: .failure(.invalidData)) {
-                client.complete(withStatusCode: status, at: index)
+                let jsonData = makeJsonData([])
+                client.complete(withStatusCode: status, data: jsonData, at: index)
             }
         }
     }
@@ -154,7 +155,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
             messages[index].completion(.failure(error))
         }
         
-        func complete(withStatusCode code: Int, data: Data = Data(), at index: Int = 0) {
+        func complete(withStatusCode code: Int, data: Data, at index: Int = 0) {
             let response =  HTTPURLResponse(
                 url: requestedUrls[index],
                 statusCode: code,
