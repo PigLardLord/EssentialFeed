@@ -42,6 +42,7 @@
 /* Begin PBXFileReference section */
 		2336B61B2AE5871700B29183 /* EssentialFeedAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2336B61D2AE5871700B29183 /* EssentialFeedAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedAPIEndToEndTests.swift; sourceTree = "<group>"; };
+		2336B63D2AE6D76D00B29183 /* CITestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CITestPlan.xctestplan; sourceTree = "<group>"; };
 		236C634A2AE2DADF0087D076 /* XCTestCase+MemoryleakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryleakTracking.swift"; sourceTree = "<group>"; };
 		239A1B492AD700EB006C98E2 /* EssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		239A1B512AD700EB006C98E2 /* EssentialFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +103,7 @@
 		239A1B3F2AD700EB006C98E2 = {
 			isa = PBXGroup;
 			children = (
+				2336B63D2AE6D76D00B29183 /* CITestPlan.xctestplan */,
 				239C3F0C2AE3FF0500347ED8 /* EssentialFeed.xctestplan */,
 				239A1B4B2AD700EB006C98E2 /* EssentialFeed */,
 				239A1B552AD700EB006C98E2 /* EssentialFeedTests */,
