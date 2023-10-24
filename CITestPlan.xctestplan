@@ -1,6 +1,12 @@
 {
   "configurations" : [
+    {
+      "id" : "46E7A230-2F66-4FC0-B854-5D9C685F9375",
+      "name" : "CI Test Scheme Action",
+      "options" : {
 
+      }
+    }
   ],
   "defaultOptions" : {
     "codeCoverage" : {
