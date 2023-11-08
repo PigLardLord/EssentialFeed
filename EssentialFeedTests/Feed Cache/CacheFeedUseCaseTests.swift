@@ -47,11 +47,13 @@ class LocalFeedLoader {
         self.currentDate = currentDate
     }
     
-    func save(_ items: [FeedItem]){
+    func save(_ items: [FeedItem], competion: @escaping (Error?) -> Void) {
         store.deleteCachedFeed { [unowned self] error in
             if error == nil {
                 store.insert(items, timestamp: currentDate())
             }
+            
+            competion(error)
         }
     }
 }
@@ -66,9 +68,9 @@ final class CacheFeedUseCaseTests: XCTestCase {
     
     func test_save_requestsDeletionOnCall() {
         let items = [uniqueItem(), uniqueItem()]
-        
         let (sut, store) = makeSUT()
-        sut.save(items)
+        
+        sut.save(items) { _ in }
         
         XCTAssertEqual(store.receivedMessages, [.deleteCachedFeedItem])
     }
@@ -76,9 +78,9 @@ final class CacheFeedUseCaseTests: XCTestCase {
     func test_save_doesNotRequestItemsInsertionOnDeletionError() {
         let items = [uniqueItem(), uniqueItem()]
         let deletionError =  anyNSError
-        
         let (sut, store) = makeSUT()
-        sut.save(items)
+        
+        sut.save(items) { _ in }
         store.completeDeletionWith(error: deletionError)
         
         XCTAssertEqual(store.receivedMessages, [.deleteCachedFeedItem])
@@ -89,10 +91,28 @@ final class CacheFeedUseCaseTests: XCTestCase {
         let items = [uniqueItem(), uniqueItem()]
         
         let (sut, store) = makeSUT(currentDate: { timestamp })
-        sut.save(items)
+        sut.save(items) { _ in }
         store.completeDeletionSuccessfully()
         
         XCTAssertEqual(store.receivedMessages, [.deleteCachedFeedItem, .insert(items, timestamp)])
+    }
+    
+    func test_save_failsOnDeletionError() {
+        let items = [uniqueItem(), uniqueItem()]
+        let deletionError =  anyNSError
+        let (sut, store) = makeSUT()
+        
+        let exp = expectation(description: "Wait for save competed")
+        var receivedError: Error?
+        sut.save(items) { error in
+            receivedError = error
+            exp.fulfill()
+        }
+        
+        store.completeDeletionWith(error: deletionError)
+        wait(for: [exp], timeout: 1.0)
+        
+        XCTAssertEqual(receivedError as? NSError, deletionError)
     }
     
     
