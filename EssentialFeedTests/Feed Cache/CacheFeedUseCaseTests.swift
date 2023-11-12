@@ -48,7 +48,6 @@ final class CacheFeedUseCaseTests: XCTestCase {
     }
     
     func test_save_failsOnDeletionError() {
-        let items = [uniqueItem(), uniqueItem()]
         let deletionError =  anyNSError
         let (sut, store) = makeSUT()
         
@@ -58,7 +57,6 @@ final class CacheFeedUseCaseTests: XCTestCase {
     }
     
     func test_save_failsOnInsertionError() {
-        let items = [uniqueItem(), uniqueItem()]
         let insertionError =  anyNSError
         let (sut, store) = makeSUT()
         
@@ -69,7 +67,6 @@ final class CacheFeedUseCaseTests: XCTestCase {
     }
     
     func test_save_succedOnSuccessfulCacheInsertion() {
-        let items = [uniqueItem(), uniqueItem()]
         let (sut, store) = makeSUT()
         
         expect(sut, toCompleteWith: nil) {
