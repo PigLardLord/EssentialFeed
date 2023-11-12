@@ -79,7 +79,7 @@ final class CacheFeedUseCaseTests: XCTestCase {
         let store =  FeedStoreSpy()
         var sut: LocalFeedLoader? = LocalFeedLoader(store: store)
         
-        var capturedErrors = [Error?]()
+        var capturedErrors = [LocalFeedLoader.SaveResult]()
         sut?.save([]) { error in
             capturedErrors.append(error)
         }
@@ -93,7 +93,7 @@ final class CacheFeedUseCaseTests: XCTestCase {
         let store =  FeedStoreSpy()
         var sut: LocalFeedLoader? = LocalFeedLoader(store: store)
         
-        var capturedErrors = [Error?]()
+        var capturedErrors = [LocalFeedLoader.SaveResult]()
         sut?.save([]) { error in
             capturedErrors.append(error)
         }
