@@ -29,7 +29,7 @@ final class LoadFeedFromCacheUseCasesTest: XCTestCase {
         let desiredError = anyNSError
         
         var receivedError: Error? = nil
-        let exp = expectation(description: "Waiting for store completion")
+        let exp = expectation(description: "Waiting for load completion")
         sut.load { error in
             receivedError = error
             exp.fulfill()
