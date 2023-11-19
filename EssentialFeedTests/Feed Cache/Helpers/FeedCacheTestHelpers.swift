@@ -8,10 +8,6 @@
 import Foundation
 import EssentialFeed
 
-var anyNSError: NSError{
-    return NSError(domain: "Any Error", code: 0)
-}
-
 func uniqueImageFeed() -> (model: [FeedImage], local: [LocalFeedImage]) {
     let items = [uniqueImage(), uniqueImage()]
     let localItems = items.map { LocalFeedImage(id: $0.id, description: $0.description, location: $0.location, url: $0.url) }
@@ -20,10 +16,6 @@ func uniqueImageFeed() -> (model: [FeedImage], local: [LocalFeedImage]) {
 
 func uniqueImage() -> FeedImage {
     return FeedImage(id: UUID(), description: nil, location: nil, url: anyUrl)
-}
-
-var anyUrl: URL {
-    return URL(string: "http://a_url.com")!
 }
 
 extension Date {
