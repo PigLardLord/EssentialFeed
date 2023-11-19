@@ -24,7 +24,7 @@ final class LoadFeedFromCacheUseCasesTest: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
     
-    func test_loadFailOnCacheRetrievalError() {
+    func test_load_failOnCacheRetrievalError() {
         let (sut, store) = makeSUT()
         let desiredError = anyNSError
         
