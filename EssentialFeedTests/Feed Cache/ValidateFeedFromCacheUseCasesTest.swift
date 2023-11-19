@@ -9,7 +9,7 @@ import XCTest
 import EssentialFeed
 
 final class ValidateFeedFromCacheUseCasesTest: XCTestCase {
-
+    
     func test_init_doesNotDeleteCacheUponCreation() {
         let (_, store) = makeSUT()
         
@@ -34,6 +34,20 @@ final class ValidateFeedFromCacheUseCasesTest: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
     
+    func test_validateCache_notDeletesCacheOnLessThanSeveDaysOldCache() {
+        let feed = uniqueImageFeed()
+        let currentDate = Date()
+        let lessThanSevenDaysOldTimestamp = currentDate.adding(days: -7).adding(seconds: 1)
+        let (sut, store) = makeSUT(currentDate: { currentDate } )
+        
+        sut.validateCache()
+        store.completeRetrieval(with: feed.local, timestamp: lessThanSevenDaysOldTimestamp)
+        
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
+    }
+    
+    //MARK: - Helpers
+    
     private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #filePath, line: UInt = #line) -> (sut: LocalFeedLoader, store: FeedStoreSpy) {
         let store = FeedStoreSpy()
         let loader = LocalFeedLoader(store: store, currentDate: currentDate)
@@ -41,9 +55,33 @@ final class ValidateFeedFromCacheUseCasesTest: XCTestCase {
         trackForMemoryLeaks(loader, file: file, line: line)
         return (loader, store)
     }
-
+    
     private var anyNSError: NSError{
         return NSError(domain: "Any Error", code: 0)
     }
     
+    private func uniqueImageFeed() -> (model: [FeedImage], local: [LocalFeedImage]) {
+        let items = [uniqueImage(), uniqueImage()]
+        let localItems = items.map { LocalFeedImage(id: $0.id, description: $0.description, location: $0.location, url: $0.url) }
+        return (items, localItems)
+    }
+    
+    private func uniqueImage() -> FeedImage {
+        return FeedImage(id: UUID(), description: nil, location: nil, url: anyUrl)
+    }
+    
+    private var anyUrl: URL {
+        return URL(string: "http://a_url.com")!
+    }
 }
+
+private extension Date {
+    func adding(days: Int) -> Date {
+        return Calendar(identifier: .gregorian).date(byAdding: .day, value: days, to: self)!
+    }
+    
+    func adding(seconds: TimeInterval) -> Date {
+        return self + seconds
+    }
+}
+
