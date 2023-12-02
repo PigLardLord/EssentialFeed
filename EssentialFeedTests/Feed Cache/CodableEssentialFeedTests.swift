@@ -36,7 +36,7 @@ class CodableFeedStore {
 
 final class CodableFeedStoreTests: XCTestCase {
     
-    override class func setUp() {
+    override func setUp() {
         super.setUp()
         let storeUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("image-feed.store")
         do {
@@ -46,7 +46,7 @@ final class CodableFeedStoreTests: XCTestCase {
         }
     }
     
-    override class func tearDown() {
+    override func tearDown() {
         super.tearDown()
         let storeUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("image-feed.store")
         do {
