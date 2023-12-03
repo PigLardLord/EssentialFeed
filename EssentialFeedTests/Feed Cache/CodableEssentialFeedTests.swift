@@ -179,6 +179,18 @@ final class CodableFeedStoreTests: XCTestCase {
         expect(sut, toRetrieve: .empty)
     }
     
+    func test_delete_wipePreviouslyInsertedCache() {
+        let sut = makeSUT()
+        let feed = uniqueImageFeed().local
+        let timestamp = Date()
+        insert(feed, with: timestamp, to: sut)
+        
+        let error = delete(from: sut)
+        
+        XCTAssertNil(error, "Expected no error deleting cache")
+        expect(sut, toRetrieve: .empty)
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(storeUrl: URL? = nil, file: StaticString = #filePath, line: UInt = #line) -> CodableFeedStore {
