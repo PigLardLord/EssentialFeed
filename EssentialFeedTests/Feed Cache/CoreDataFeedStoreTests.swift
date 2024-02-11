@@ -15,7 +15,9 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     }
     
     func test_retireve_hasNoSideEffectOnEmptyCache() {
+        let sut = makeSUT()
         
+        assertThatRetireveHasNoSideEffectOnEmptyCache(on: sut)
     }
     
     func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
