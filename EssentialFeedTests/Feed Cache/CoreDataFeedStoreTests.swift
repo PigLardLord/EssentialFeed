@@ -5,10 +5,13 @@
         
 
 import XCTest
+import EssentialFeed
 
 final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     func test_retireve_deliversEmptyOnEmptyCache() {
+        let sut = makeSUT()
         
+        assertThatRetireveDeliversEmptyOnEmptyCache(on: sut)
     }
     
     func test_retireve_hasNoSideEffectOnEmptyCache() {
@@ -54,4 +57,13 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     func test_storeSideEffects_runSerially() {
         
     }
+    
+    //MARK: - Helpers
+    
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> FeedStore {
+        let sut = CoreDataFeedStore()
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return sut
+    }
+
 }
