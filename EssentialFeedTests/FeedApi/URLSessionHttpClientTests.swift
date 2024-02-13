@@ -124,10 +124,6 @@ class URLSessionHttpClientTests: XCTestCase {
         return receivedResult
     }
     
-    private var anyUrl: URL {
-        return URL(string: "http://a_url.com")!
-    }
-    
     private var nonHTTPResponse: URLResponse {
         return URLResponse()
     }
@@ -138,10 +134,6 @@ class URLSessionHttpClientTests: XCTestCase {
     
     private var anyData: Data {
         return Data()
-    }
-    
-    private var anyNSError: NSError{
-        return NSError(domain: "Any Error", code: 0)
     }
     
     private class URLProtocolStub: URLProtocol {
