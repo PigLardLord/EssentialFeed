@@ -17,7 +17,7 @@ public final class RemoteFeedLoader: FeedLoader {
         case invalidData
     }
     
-    public typealias FeedResult = LoadFeedResult
+    public typealias FeedResult = FeedLoader.Result
     
     public init(client: HttpClient, url: URL){
         self.client = client
