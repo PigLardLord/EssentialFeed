@@ -16,7 +16,7 @@ public class URLSessionHTTPClient: HttpClient {
     
     private struct UnexpectedValuesRepresentation: Error {}
     
-    public func get(from url: URL, completion: @escaping (HttpClientResult) -> Void) {
+    public func get(from url: URL, completion: @escaping (HttpClient.Result) -> Void) {
         let task = session.dataTask(with: url) { data, response, error in
             if let error{
                 completion(.failure(error))
