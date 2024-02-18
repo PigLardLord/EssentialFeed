@@ -133,7 +133,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
             "description" : item.description,
             "location" : item.location,
             "image" : item.url.absoluteString
-        ].compactMapValues { return $0 }
+        ].compactMapValues { $0 }
         
         return (item, itemJson)
     }
