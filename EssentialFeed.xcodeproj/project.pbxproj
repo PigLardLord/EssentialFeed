@@ -86,9 +86,10 @@
 		2323BBA22B8BC3090078DDF9 /* EssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2323BBA92B8BC3090078DDF9 /* EssentialFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2323BBB72B8BC3B70078DDF9 /* EssentialFeediOSTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialFeediOSTests.xctestplan; sourceTree = "<group>"; };
+		2323BBB82B8BC5350078DDF9 /* CI_iOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = CI_iOS.xctestplan; path = ../CI_iOS.xctestplan; sourceTree = "<group>"; };
 		2336B61B2AE5871700B29183 /* EssentialFeedAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2336B61D2AE5871700B29183 /* EssentialFeedAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedAPIEndToEndTests.swift; sourceTree = "<group>"; };
-		2336B63D2AE6D76D00B29183 /* CITestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CITestPlan.xctestplan; sourceTree = "<group>"; };
+		2336B63D2AE6D76D00B29183 /* CI_macOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI_macOS.xctestplan; sourceTree = "<group>"; };
 		235DAC0D2B0D319A000C3466 /* FeedCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCachePolicy.swift; sourceTree = "<group>"; };
 		23649E582AF7FE7B00D107F1 /* CacheFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTests.swift; sourceTree = "<group>"; };
 		236C31912AE833B60009A0EF /* CI.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = CI.yml; path = .github/workflows/CI.yml; sourceTree = "<group>"; };
@@ -239,7 +240,8 @@
 				2323BB9C2B8BC1B70078DDF9 /* EssentialFeedCacheIntegrationTests.xctestplan */,
 				236C31922AE985520009A0EF /* README.md */,
 				236C31912AE833B60009A0EF /* CI.yml */,
-				2336B63D2AE6D76D00B29183 /* CITestPlan.xctestplan */,
+				2336B63D2AE6D76D00B29183 /* CI_macOS.xctestplan */,
+				2323BBB82B8BC5350078DDF9 /* CI_iOS.xctestplan */,
 				239C3F0C2AE3FF0500347ED8 /* EssentialFeed.xctestplan */,
 				239A1B4B2AD700EB006C98E2 /* EssentialFeed */,
 				239A1B552AD700EB006C98E2 /* EssentialFeedTests */,
