@@ -1,5 +1,6 @@
 //
-//  Copyright © 2019 Essential Developer. All rights reserved.
+// Created on 25/02/24 using Swift 5.0
+// Copyright © 2024 Cortado AG. All rights reserved.
 //
 
 import UIKit
