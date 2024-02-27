@@ -190,6 +190,7 @@
 		2323BBAD2B8BC30A0078DDF9 /* EssentialFeediOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				2323BBB72B8BC3B70078DDF9 /* EssentialFeediOSTests.xctestplan */,
 			);
 			path = EssentialFeediOSTests;
 			sourceTree = "<group>";
@@ -236,13 +237,10 @@
 		239A1B3F2AD700EB006C98E2 = {
 			isa = PBXGroup;
 			children = (
-				2323BBB72B8BC3B70078DDF9 /* EssentialFeediOSTests.xctestplan */,
-				2323BB9C2B8BC1B70078DDF9 /* EssentialFeedCacheIntegrationTests.xctestplan */,
 				236C31922AE985520009A0EF /* README.md */,
 				236C31912AE833B60009A0EF /* CI.yml */,
 				2336B63D2AE6D76D00B29183 /* CI_macOS.xctestplan */,
 				2323BBB82B8BC5350078DDF9 /* CI_iOS.xctestplan */,
-				239C3F0C2AE3FF0500347ED8 /* EssentialFeed.xctestplan */,
 				239A1B4B2AD700EB006C98E2 /* EssentialFeed */,
 				239A1B552AD700EB006C98E2 /* EssentialFeedTests */,
 				2336B61C2AE5871700B29183 /* EssentialFeedAPIEndToEndTests */,
@@ -279,6 +277,7 @@
 		239A1B552AD700EB006C98E2 /* EssentialFeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				239C3F0C2AE3FF0500347ED8 /* EssentialFeed.xctestplan */,
 				236C63492AE2DAAD0087D076 /* Helpers */,
 				23649E572AF7FE1200D107F1 /* Feed Cache */,
 				23D1A35F2ADEC76F00D9768E /* FeedApi */,
@@ -363,6 +362,7 @@
 		23E11FAB2B7BE94D00FF17E0 /* EssentialFeedCacheIntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
+				2323BB9C2B8BC1B70078DDF9 /* EssentialFeedCacheIntegrationTests.xctestplan */,
 				23E11FAC2B7BE94E00FF17E0 /* EssentialFeedCacheIntegrationTests.swift */,
 			);
 			path = EssentialFeedCacheIntegrationTests;
