@@ -41,6 +41,7 @@
 		23D32B272B1E47CF004A2E3D /* FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D32B262B1E47CF004A2E3D /* FeedStoreSpecs.swift */; };
 		23D32B292B1E4991004A2E3D /* XCTestCase+FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D32B282B1E4991004A2E3D /* XCTestCase+FeedStoreSpecs.swift */; };
 		23D32B2B2B1E56FB004A2E3D /* XCTestCase+FailableInsertFeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D32B2A2B1E56FB004A2E3D /* XCTestCase+FailableInsertFeedStoreSpecs.swift */; };
+		23D92FBE2B98EBF200DA1021 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D92FBD2B98EBF200DA1021 /* FeedViewController.swift */; };
 		23DE48552B1E5F3900DCD8FE /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE48542B1E5F3900DCD8FE /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift */; };
 		23DE48572B1E5F8300DCD8FE /* XCTeastCase+FailableDeleteFeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DE48562B1E5F8300DCD8FE /* XCTeastCase+FailableDeleteFeedStoreSpecs.swift */; };
 		23E11F9D2B79356A00FF17E0 /* FeedStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23E11F9B2B79356A00FF17E0 /* FeedStore.xcdatamodeld */; };
@@ -146,6 +147,7 @@
 		23D32B262B1E47CF004A2E3D /* FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpecs.swift; sourceTree = "<group>"; };
 		23D32B282B1E4991004A2E3D /* XCTestCase+FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		23D32B2A2B1E56FB004A2E3D /* XCTestCase+FailableInsertFeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableInsertFeedStoreSpecs.swift"; sourceTree = "<group>"; };
+		23D92FBD2B98EBF200DA1021 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		23DE48542B1E5F3900DCD8FE /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableRetrieveFeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		23DE48562B1E5F8300DCD8FE /* XCTeastCase+FailableDeleteFeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTeastCase+FailableDeleteFeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		23E11F9C2B79356A00FF17E0 /* FeedStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeedStore.xcdatamodel; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 		2323BBA32B8BC3090078DDF9 /* EssentialFeediOS */ = {
 			isa = PBXGroup;
 			children = (
+				23D92FBD2B98EBF200DA1021 /* FeedViewController.swift */,
 			);
 			path = EssentialFeediOS;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				TargetAttributes = {
 					2323BBA12B8BC3090078DDF9 = {
 						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1520;
 					};
 					2323BBA82B8BC3090078DDF9 = {
 						CreatedOnToolsVersion = 15.2;
@@ -639,6 +643,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23D92FBE2B98EBF200DA1021 /* FeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +756,7 @@
 		2323BBB22B8BC30A0078DDF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -776,6 +782,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -784,6 +791,7 @@
 		2323BBB32B8BC30A0078DDF9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -818,6 +826,7 @@
 		2323BBB52B8BC30A0078DDF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -838,6 +847,7 @@
 		2323BBB62B8BC30A0078DDF9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
