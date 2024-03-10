@@ -17,18 +17,6 @@ extension FeedViewController {
         endAppearanceTransition()
     }
     
-    private func replaceRefreshControlWithFake() {
-        let fake = FakeRefreshControl()
-        
-        refreshControl?.allTargets.forEach({ target in
-            refreshControl?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach {
-                fake.addTarget(target, action: Selector($0), for: .valueChanged)
-            }
-        })
-        
-        self.refreshControl = fake
-    }
-    
     @discardableResult
     func simulateFeedImageViewVisible(at row: Int) -> FeedImageCell? {
         return feedImageView(at: row) as? FeedImageCell
@@ -83,17 +71,18 @@ extension FeedViewController {
     private var feedSection: Int { 0 }
 }
 
+//MARK: - FakeRefreshControl helper
 
-private class FakeRefreshControl: UIRefreshControl {
-    private var _isRefreshing: Bool = false
-    
-    override var isRefreshing: Bool { _isRefreshing }
-    
-    override func beginRefreshing() {
-        _isRefreshing = true
-    }
-    
-    override func endRefreshing() {
-        _isRefreshing = false
+extension FeedViewController {
+    private func replaceRefreshControlWithFake() {
+        let fake = FakeRefreshControl()
+        
+        refreshControl?.allTargets.forEach({ target in
+            refreshControl?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach {
+                fake.addTarget(target, action: Selector($0), for: .valueChanged)
+            }
+        })
+        
+        self.refreshControl = fake
     }
 }
