@@ -87,8 +87,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     }
     
     public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        tasks[indexPath]?.cancel()
-        tasks.removeValue(forKey: indexPath)
+        cancelTask(at: indexPath)
     }
     
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
@@ -100,8 +99,12 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     
     public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
-            tasks[indexPath]?.cancel()
-            tasks.removeValue(forKey: indexPath)
+            cancelTask(at: indexPath)
         }
+    }
+    
+    private func cancelTask(at indexPath: IndexPath) {
+        tasks[indexPath]?.cancel()
+        tasks.removeValue(forKey: indexPath)
     }
 }
