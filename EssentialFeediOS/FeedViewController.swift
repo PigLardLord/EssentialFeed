@@ -70,7 +70,7 @@ public final class FeedViewController: UITableViewController {
             let data = try? result.get()
             let image = data.map(UIImage.init) ?? nil
             cell?.feedImageView.image = image
-            cell?.feedImageRetryButton.isHidden = (data != nil)
+            cell?.feedImageRetryButton.isHidden = (image != nil)
             cell?.feedImageContainer.stopShimmering()
         }
         return cell
