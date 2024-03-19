@@ -51,11 +51,11 @@ extension FeedViewController {
     }
     
     func simulateUserInitiatedReload() {
-        refreshController?.view?.simulatePullToRefresh()
+        refreshControl?.simulatePullToRefresh()
     }
     
     var isShowingLoadingIndicator: Bool {
-        refreshController?.view?.isRefreshing == true
+        refreshControl?.isRefreshing == true
     }
     
     func numberOfRenderedFeedImageViews() -> Int {
@@ -77,12 +77,12 @@ extension FeedViewController {
     private func replaceRefreshControlWithFake() {
         let fake = FakeRefreshControl()
         
-        refreshController?.view?.allTargets.forEach({ target in
-            refreshController?.view?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach {
+        refreshControl?.allTargets.forEach({ target in
+            refreshControl?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach {
                 fake.addTarget(target, action: Selector($0), for: .valueChanged)
             }
         })
         
-        refreshController?.view = fake
+        refreshControl = fake
     }
 }
