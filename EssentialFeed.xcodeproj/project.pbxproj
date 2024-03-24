@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		231405BA2BB04AC60072D94C /* FeedImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231405B92BB04AC60072D94C /* FeedImagePresenter.swift */; };
 		231B5F092B9CDB06004DA623 /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231B5F082B9CDB06004DA623 /* FeedImageCell.swift */; };
 		2323BBAA2B8BC30A0078DDF9 /* EssentialFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2323BBA22B8BC3090078DDF9 /* EssentialFeediOS.framework */; };
 		2323BBBC2B8E6C240078DDF9 /* FeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2323BBBB2B8E6C240078DDF9 /* FeedViewControllerTests.swift */; };
@@ -124,6 +125,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		231405B92BB04AC60072D94C /* FeedImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImagePresenter.swift; sourceTree = "<group>"; };
 		231B5F082B9CDB06004DA623 /* FeedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCell.swift; sourceTree = "<group>"; };
 		2323BB9C2B8BC1B70078DDF9 /* EssentialFeedCacheIntegrationTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialFeedCacheIntegrationTests.xctestplan; sourceTree = "<group>"; };
 		2323BBA22B8BC3090078DDF9 /* EssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -403,6 +405,7 @@
 			children = (
 				239B4A712BA75D39003ADF42 /* FeedImageViewModel.swift */,
 				239B4A752BA76747003ADF42 /* FeedPresenter.swift */,
+				231405B92BB04AC60072D94C /* FeedImagePresenter.swift */,
 			);
 			path = FeedPresentation;
 			sourceTree = "<group>";
@@ -772,6 +775,7 @@
 				231B5F092B9CDB06004DA623 /* FeedImageCell.swift in Sources */,
 				239B4A722BA75D39003ADF42 /* FeedImageViewModel.swift in Sources */,
 				23B2483F2B9DD45B00AE1A42 /* UiView+Shimmering.swift in Sources */,
+				231405BA2BB04AC60072D94C /* FeedImagePresenter.swift in Sources */,
 				239B4A6A2BA7041F003ADF42 /* FeedImageCellController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
