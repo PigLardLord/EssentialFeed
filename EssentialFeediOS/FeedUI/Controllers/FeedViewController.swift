@@ -23,6 +23,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        title = "My Feed"
     }
     
     public override func viewIsAppearing (_ animated: Bool) {
