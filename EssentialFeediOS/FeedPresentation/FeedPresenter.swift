@@ -3,7 +3,7 @@
 // Copyright © 2024 Cortado AG. All rights reserved.
 //
         
-
+import Foundation
 import EssentialFeed
 
 protocol FeedLoadingView {
@@ -26,7 +26,7 @@ final class FeedPresenter {
     }
     
     static var title: String {
-        return "My Feed"
+        return String(localized: "FEED_VIEW_TITLE", table: "Feed", bundle: Bundle(for: FeedPresenter.self), comment: "Title for the feed view")
     }
     
     func didStartLoadingFeed() {
