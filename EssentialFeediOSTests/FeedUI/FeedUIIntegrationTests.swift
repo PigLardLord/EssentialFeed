@@ -287,6 +287,21 @@ final class FeedUIIntegrationTests: XCTestCase {
         wait(for: [exp])
     }
     
+    func test_loadImageDauaCompletion_dispatchedFromBackgroundToMainTherad() {
+        let (sut, loader) = makeSUT()
+        
+        sut.simulateAppereance()
+        loader.completeFeedLoading(with: [makeImage()])
+        sut.simulateFeedImageViewVisible(at: 0)
+        
+        let exp = expectation(description: "wait for background queue")
+        DispatchQueue.global(qos: .background).async {
+            loader.completeImageLoading(with: self.anyImageData, at: 0)
+            exp.fulfill()
+        }
+        wait(for: [exp])
+    }
+    
     
     //MARK: - Helpers
     
