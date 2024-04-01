@@ -19,13 +19,15 @@
                             <rect key="frame" x="0.0" y="0.0" width="393" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmL-HC-95S">
+                                <button opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DmL-HC-95S">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="34"/>
                                     <viewLayoutGuide key="safeArea" id="WbF-Cs-WnB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                    <state key="normal" title="Error label"/>
+                                    <connections>
+                                        <action selector="hideMessage" destination="IWI-XQ-1Wo" eventType="touchUpInside" id="8Me-Ru-fpT"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <gestureRecognizers/>
@@ -36,7 +38,7 @@
                                 <constraint firstItem="DmL-HC-95S" firstAttribute="top" secondItem="IWI-XQ-1Wo" secondAttribute="top" id="nQE-nY-K4C"/>
                             </constraints>
                             <connections>
-                                <outlet property="label" destination="DmL-HC-95S" id="aEy-zZ-ypL"/>
+                                <outlet property="button" destination="DmL-HC-95S" id="0hY-1s-4xS"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="2sl-zY-WvU">
