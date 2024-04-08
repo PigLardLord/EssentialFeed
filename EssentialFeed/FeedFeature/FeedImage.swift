@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct FeedImage: Equatable, Decodable{
+public struct FeedImage: Hashable {
     public let id: UUID
     public let description: String?
     public let location: String?
