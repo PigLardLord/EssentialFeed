@@ -123,6 +123,23 @@ final class FeedImagePresenterTests: XCTestCase {
         XCTAssertEqual(model?.shouldRetry, false)
     }
     
+    func test_didFinishLoadingImageDataWithData_stopLoadingAndEnablesRetryOnFailedTrasformation(){
+        let image = uniqueImage()
+        let data = Data()
+        let failingTransformer: (Data) -> AnyImage? = { _ in nil }
+        let (sut, view) = makeSUT(trasformer: failingTransformer)
+        
+        sut.didFinishLoadingImageData(with: data, for: image)
+        
+        let model = view.messages.first
+        XCTAssertEqual(view.messages.count, 1)
+        XCTAssertEqual(model?.description, image.description)
+        XCTAssertEqual(model?.location, image.location)
+        XCTAssertEqual(model?.image, nil)
+        XCTAssertEqual(model?.isLoading, false)
+        XCTAssertEqual(model?.shouldRetry, true)
+    }
+    
     // Helpers
     
     private func makeSUT(
