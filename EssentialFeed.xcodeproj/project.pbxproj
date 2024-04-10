@@ -313,15 +313,23 @@
 		234945282BC690BA00D9E028 /* Feed Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				234945392BC70E4700D9E028 /* View Models */,
 				234945292BC690D200D9E028 /* FeedPresenter.swift */,
-				2349452C2BC692F700D9E028 /* FeedLoadingViewModel.swift */,
-				2349452E2BC6937B00D9E028 /* FeedViewModel.swift */,
-				234945302BC693A800D9E028 /* FeedErrorViewModel.swift */,
 				234945352BC70CFB00D9E028 /* FeedImagePresenter.swift */,
-				234945372BC70DF400D9E028 /* FeedImageViewModel.swift */,
 				234945232BC68AD100D9E028 /* Feed.strings */,
 			);
 			path = "Feed Presentation";
+			sourceTree = "<group>";
+		};
+		234945392BC70E4700D9E028 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				2349452C2BC692F700D9E028 /* FeedLoadingViewModel.swift */,
+				234945302BC693A800D9E028 /* FeedErrorViewModel.swift */,
+				2349452E2BC6937B00D9E028 /* FeedViewModel.swift */,
+				234945372BC70DF400D9E028 /* FeedImageViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 		234999A92BBB2FA70062CBC6 /* Helpers */ = {
