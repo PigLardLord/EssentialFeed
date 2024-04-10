@@ -81,13 +81,7 @@ final class FeedImagePresenterTests: XCTestCase {
         
         sut.didStartLoadingImageData(for: image)
         
-        let model = view.messages.first
-        XCTAssertEqual(view.messages.count, 1)
-        XCTAssertEqual(model?.description, image.description)
-        XCTAssertEqual(model?.location, image.location)
-        XCTAssertNil(model?.image)
-        XCTAssertEqual(model?.isLoading, true)
-        XCTAssertEqual(model?.shouldRetry, false)
+        expect(view, with: image, toPresent: nil, isLoading: true, showRetry: false)
     }
     
     func test_didFinishLoadingImageDataWithError_stopLoadingAndEnablesRetry(){
@@ -97,13 +91,7 @@ final class FeedImagePresenterTests: XCTestCase {
         
         sut.didFinishLoadingImageData(with: error, for: image)
         
-        let model = view.messages.first
-        XCTAssertEqual(view.messages.count, 1)
-        XCTAssertEqual(model?.description, image.description)
-        XCTAssertEqual(model?.location, image.location)
-        XCTAssertNil(model?.image)
-        XCTAssertEqual(model?.isLoading, false)
-        XCTAssertEqual(model?.shouldRetry, true)
+        expect(view, with: image, toPresent: nil, isLoading: false, showRetry: true)
     }
     
     func test_didFinishLoadingImageDataWithData_stopLoadinAndDisplaysImage(){
@@ -114,13 +102,7 @@ final class FeedImagePresenterTests: XCTestCase {
         
         sut.didFinishLoadingImageData(with: data, for: image)
         
-        let model = view.messages.first
-        XCTAssertEqual(view.messages.count, 1)
-        XCTAssertEqual(model?.description, image.description)
-        XCTAssertEqual(model?.location, image.location)
-        XCTAssertEqual(model?.image, transformedData)
-        XCTAssertEqual(model?.isLoading, false)
-        XCTAssertEqual(model?.shouldRetry, false)
+        expect(view, with: image, toPresent: transformedData, isLoading: false, showRetry: false)
     }
     
     func test_didFinishLoadingImageDataWithData_stopLoadingAndEnablesRetryOnFailedTrasformation(){
@@ -131,14 +113,9 @@ final class FeedImagePresenterTests: XCTestCase {
         
         sut.didFinishLoadingImageData(with: data, for: image)
         
-        let model = view.messages.first
-        XCTAssertEqual(view.messages.count, 1)
-        XCTAssertEqual(model?.description, image.description)
-        XCTAssertEqual(model?.location, image.location)
-        XCTAssertEqual(model?.image, nil)
-        XCTAssertEqual(model?.isLoading, false)
-        XCTAssertEqual(model?.shouldRetry, true)
+        expect(view, with: image, toPresent: nil, isLoading: false, showRetry: true)
     }
+    
     
     // Helpers
     
@@ -151,6 +128,24 @@ final class FeedImagePresenterTests: XCTestCase {
         trackForMemoryLeaks(view, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, view)
+    }
+    
+    private func expect(
+        _ view:ViewSpy,
+        with feedImage: FeedImage,
+        toPresent imageData: AnyImage?,
+        isLoading: Bool,
+        showRetry: Bool,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        let model = view.messages.first
+        XCTAssertEqual(view.messages.count, 1, file: file, line: line)
+        XCTAssertEqual(model?.description, feedImage.description, file: file, line: line)
+        XCTAssertEqual(model?.location, feedImage.location, file: file, line: line)
+        XCTAssertEqual(model?.image, imageData, file: file, line: line)
+        XCTAssertEqual(model?.isLoading, isLoading, file: file, line: line)
+        XCTAssertEqual(model?.shouldRetry, showRetry, file: file, line: line)
     }
     
     private struct AnyImage: Equatable {}
