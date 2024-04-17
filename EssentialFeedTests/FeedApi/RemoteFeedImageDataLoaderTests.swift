@@ -4,12 +4,17 @@
         
 
 import XCTest
+import EssentialFeed
 
 class RemoteFeedImageDataLoader {
-    let client: Any
+    let client: HttpClient
     
-    init(client: Any) {
+    init(client: HttpClient) {
         self.client = client
+    }
+    
+    func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) {
+        client.get(from: url) { _ in }
     }
 }
 
@@ -21,6 +26,14 @@ final class RemoteFeedImageDataLoaderTests: XCTestCase {
         XCTAssertTrue(client.messages.isEmpty)
     }
     
+    func test_loadImageFromUrl_requestDataFromUrl() {
+        let(sut, client) = makeSUT()
+        let url = URL(string: "a-given-url")!
+        
+        sut.loadImageData(from: url) { _ in }
+        
+        XCTAssertEqual(client.messages, [url])
+    }
     
     //MARK: - Helpers
     
@@ -32,8 +45,12 @@ final class RemoteFeedImageDataLoaderTests: XCTestCase {
         return (sut, client)
     }
     
-    private class HttpClientSpy {
+    private class HttpClientSpy: HttpClient {
         var messages: [URL] = []
+        
+        func get(from url: URL, completion: @escaping (HttpClient.Result) -> Void) {
+            messages.append(url)
+        }
     }
 }
 
