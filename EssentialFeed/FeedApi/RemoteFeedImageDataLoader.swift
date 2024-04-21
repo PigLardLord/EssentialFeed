@@ -13,6 +13,7 @@ public class RemoteFeedImageDataLoader: FeedImageDataLoader {
     }
     
     public enum Error: Swift.Error {
+        case connectivity
         case invalidData
     }
     
@@ -46,7 +47,8 @@ public class RemoteFeedImageDataLoader: FeedImageDataLoader {
             guard self != nil else { return }
             
             switch result {
-                case .failure(let error):  task.complete(with: .failure(error))
+                case .failure(let error):  
+                    task.complete(with: .failure(Error.connectivity))
                 case let .success((response, data)):
                     if response.statusCode == 200, !data.isEmpty {
                         task.complete(with: .success(data))
