@@ -14,7 +14,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
         
         let (_, client) = makeSut()
         
-        XCTAssertTrue(client.requestedUrls.isEmpty)
+        XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_load_requestDataFromUrl() {
@@ -23,7 +23,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
     
         sut.load { _ in }
         
-        XCTAssertEqual(client.requestedUrls, [url])
+        XCTAssertEqual(client.requestedURLs, [url])
     }
     
     func test_loadTwice_requestDataFromUrlTwice() {
@@ -33,7 +33,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
         sut.load { _ in }
         sut.load { _ in }
         
-        XCTAssertEqual(client.requestedUrls, [url, url])
+        XCTAssertEqual(client.requestedURLs, [url, url])
     }
     
     func test_load_deliversErrorOnClientError() {
@@ -164,39 +164,5 @@ final class RemoteFeedLoaderTests: XCTestCase {
     
     private func failure(_ error: RemoteFeedLoader.Error) -> RemoteFeedLoader.FeedResult{
         return .failure(error)
-    }
-    
-    private class HttpClientSpy: HttpClient {
-        private struct Task: HTTPClientTask {
-            func cancel() {}
-        }
-        
-        var messages: [(url: URL, completion: (HttpClient.Result) -> Void)] = []
-        
-        var requestedUrls: [URL] {
-            return messages.map {
-                $0.url
-            }
-        }
-        
-        func get(from url: URL, completion: @escaping (HttpClient.Result) -> Void) -> HTTPClientTask {
-            messages.append((url, completion))
-            return Task()
-        }
-        
-        func complete(with error: Error, at index: Int = 0) {
-            messages[index].completion(.failure(error))
-        }
-        
-        func complete(withStatusCode code: Int, data: Data, at index: Int = 0) {
-            let response =  HTTPURLResponse(
-                url: requestedUrls[index],
-                statusCode: code,
-                httpVersion: nil,
-                headerFields: nil
-            )!
-            
-            messages[index].completion(.success((response, data)))
-        }
     }
 }
