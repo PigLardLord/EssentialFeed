@@ -167,6 +167,10 @@ final class RemoteFeedLoaderTests: XCTestCase {
     }
     
     private class HttpClientSpy: HttpClient {
+        private struct Task: HTTPClientTask {
+            func cancel() {}
+        }
+        
         var messages: [(url: URL, completion: (HttpClient.Result) -> Void)] = []
         
         var requestedUrls: [URL] {
@@ -175,8 +179,9 @@ final class RemoteFeedLoaderTests: XCTestCase {
             }
         }
         
-        func get(from url: URL, completion: @escaping (HttpClient.Result) -> Void) {
+        func get(from url: URL, completion: @escaping (HttpClient.Result) -> Void) -> HTTPClientTask {
             messages.append((url, completion))
+            return Task()
         }
         
         func complete(with error: Error, at index: Int = 0) {

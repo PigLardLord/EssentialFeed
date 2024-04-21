@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class URLSessionHTTPClient: HttpClient {
+public final class URLSessionHTTPClient: HttpClient {
     private let session: URLSession
     
     public init(session: URLSession = .shared) {
@@ -16,7 +16,15 @@ public class URLSessionHTTPClient: HttpClient {
     
     private struct UnexpectedValuesRepresentation: Error {}
     
-    public func get(from url: URL, completion: @escaping (HttpClient.Result) -> Void) {
+    private struct URLSessionTaskWrapper: HTTPClientTask {
+        let wrapped: URLSessionTask
+        
+        func cancel() {
+            wrapped.cancel()
+        }
+    }
+    
+    public func get(from url: URL, completion: @escaping (HttpClient.Result) -> Void) -> HTTPClientTask {
         let task = session.dataTask(with: url) { data, response, error in
             completion( Result {
                 if let error {
@@ -29,5 +37,6 @@ public class URLSessionHTTPClient: HttpClient {
             })
         }
         task.resume()
+        return URLSessionTaskWrapper(wrapped: task)
     }
 }
