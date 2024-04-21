@@ -93,7 +93,7 @@ final class RemoteFeedImageDataLoaderTests: XCTestCase {
         
         samples.enumerated().forEach { index, code in
             expect(sut, toCompleteWith: failure(.invalidData), when: {
-                client.complete(withStatusCode: code, data: anyData(), at: index)
+                client.complete(withStatusCode: code, data: anyData, at: index)
             })
         }
     }
@@ -135,7 +135,7 @@ final class RemoteFeedImageDataLoaderTests: XCTestCase {
         sut?.loadImageData(from: anyUrl) { capturedResults.append($0) }
         
         sut = nil
-        client.complete(withStatusCode: 200, data: anyData())
+        client.complete(withStatusCode: 200, data: anyData)
         
         XCTAssertTrue(capturedResults.isEmpty)
     }
@@ -163,10 +163,6 @@ final class RemoteFeedImageDataLoaderTests: XCTestCase {
         trackForMemoryLeaks(client)
         trackForMemoryLeaks(sut)
         return (sut, client)
-    }
-    
-    private func anyData() -> Data {
-        return Data("any data".utf8)
     }
     
     private func failure(_ error: RemoteFeedImageDataLoader.Error) -> FeedImageDataLoader.Result {
