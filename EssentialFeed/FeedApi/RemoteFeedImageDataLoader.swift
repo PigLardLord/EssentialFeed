@@ -5,7 +5,7 @@
 
 import Foundation
 
-public class RemoteFeedImageDataLoader {
+public class RemoteFeedImageDataLoader: FeedImageDataLoader {
     private let client: HttpClient
     
     public init(client: HttpClient) {
