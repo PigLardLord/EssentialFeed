@@ -14,8 +14,7 @@ final class FeedItemsMapper {
 
     static func getResult(from response: HTTPURLResponse, and data: Data ) throws -> [RemoteFeedItem] {
         let decoder = JSONDecoder()
-        guard response.statusCode == 200,
-            let root = try? decoder.decode(RootNode.self, from: data) else {
+        guard response.isOK, let root = try? decoder.decode(RootNode.self, from: data) else {
             throw RemoteFeedLoader.Error.invalidData
         }
         
