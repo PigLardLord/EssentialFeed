@@ -30,8 +30,13 @@ final class LocalFeedImageDataLoader: FeedImageDataLoader {
     func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
         store.retrieve(dataForURL: url) { result in
             switch result {
-                case let .success(data): completion(.failure(Error.notFound))
-                default: completion(.failure(Error.failed))
+                case let .success(data): 
+                    guard let data else {
+                        return completion(.failure(Error.notFound))
+                    }
+                    completion(.success(data))
+                default: 
+                    completion(.failure(Error.failed))
             }
             
         }
@@ -70,6 +75,15 @@ class LocalFeedImageDataLoaderTests: XCTestCase {
             store.complete(with: .none)
         }
     }
+    
+    func test_loadImageDataFromURL_deliversStoredDataOnFoundData() {
+        let (sut, store) = makeSUT()
+        let imageData = anyData
+        
+        expect(sut, toCompleteWith: success(imageData)) {
+            store.complete(with: imageData)
+        }
+    }
 
     
     // MARK: - Helpers
@@ -84,6 +98,10 @@ class LocalFeedImageDataLoaderTests: XCTestCase {
     
     private func failure(_ error: LocalFeedImageDataLoader.Error) -> FeedImageDataLoader.Result {
         return .failure(error)
+    }
+    
+    private func success(_ data: Data) -> FeedImageDataLoader.Result {
+        return .success(data)
     }
     
     private func expect(_ sut: LocalFeedImageDataLoader, toCompleteWith expectedResult: FeedImageDataLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
