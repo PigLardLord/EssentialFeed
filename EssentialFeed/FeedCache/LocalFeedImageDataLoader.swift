@@ -32,10 +32,15 @@ public final class LocalFeedImageDataLoader: FeedImageDataLoader {
         case notFound
     }
     
+    public typealias SaveResult = Result<Void, Swift.Error>
     private let store: FeedImageDataStore
     
     public init(store: FeedImageDataStore) {
         self.store = store
+    }
+    
+    public func save(_ data: Data, for url: URL, completion: @escaping (SaveResult) -> Void) {
+        store.insert(data, for: url) { _ in }
     }
     
     public func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
