@@ -7,7 +7,7 @@
 import Foundation
 import CoreData
 
-public final class CoreDataFeedStore: FeedStore {
+public final class CoreDataFeedStore {
     private let container: NSPersistentContainer
     private let context: NSManagedObjectContext
     
@@ -15,6 +15,14 @@ public final class CoreDataFeedStore: FeedStore {
         container = try NSPersistentContainer.load(modelName: "FeedStore", from: storeUrl, in: bundle)
         context = container.newBackgroundContext()
     }
+    
+    func perform(_ action: @escaping (NSManagedObjectContext) -> Void) {
+        let context = self.context
+        context.perform { action(context) }
+    }
+}
+
+extension CoreDataFeedStore: FeedStore {
     
     public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
         perform { context in
@@ -39,14 +47,9 @@ public final class CoreDataFeedStore: FeedStore {
         perform { context in
             completion( Result {
                 try ManagedCache.find(in: context).map {
-                    return CachedFeed(feed: $0.localFeed, timestamp: $0.timestamp)
+                    CachedFeed(feed: $0.localFeed, timestamp: $0.timestamp)
                 }
             })
         }
-    }
-    
-    func perform(_ action: @escaping (NSManagedObjectContext) -> Void) {
-        let context = self.context
-        context.perform { action(context) }
     }
 }
