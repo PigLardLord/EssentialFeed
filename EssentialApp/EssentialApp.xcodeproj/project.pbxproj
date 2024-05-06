@@ -21,6 +21,7 @@
 		23AD616F2BE93CFB0037AECE /* FeedImageDataLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AD616E2BE93CFB0037AECE /* FeedImageDataLoaderWithFallbackCompositeTests.swift */; };
 		23AD61712BE94A170037AECE /* FeedImageDataLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AD61702BE94A170037AECE /* FeedImageDataLoaderWithFallbackComposite.swift */; };
 		23AD61742BE94AFB0037AECE /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AD61732BE94AFB0037AECE /* XCTestCase+MemoryLeakTracking.swift */; };
+		23AD61762BE94CF40037AECE /* SharedHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AD61752BE94CF40037AECE /* SharedHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		23AD616E2BE93CFB0037AECE /* FeedImageDataLoaderWithFallbackCompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderWithFallbackCompositeTests.swift; sourceTree = "<group>"; };
 		23AD61702BE94A170037AECE /* FeedImageDataLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 		23AD61732BE94AFB0037AECE /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
+		23AD61752BE94CF40037AECE /* SharedHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				23AD61732BE94AFB0037AECE /* XCTestCase+MemoryLeakTracking.swift */,
+				23AD61752BE94CF40037AECE /* SharedHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23AD61762BE94CF40037AECE /* SharedHelpers.swift in Sources */,
 				23AD616F2BE93CFB0037AECE /* FeedImageDataLoaderWithFallbackCompositeTests.swift in Sources */,
 				23AD614A2BE8EDB90037AECE /* FeedLoaderWithFallbackCompositeTests.swift in Sources */,
 				23AD61742BE94AFB0037AECE /* XCTestCase+MemoryLeakTracking.swift in Sources */,
