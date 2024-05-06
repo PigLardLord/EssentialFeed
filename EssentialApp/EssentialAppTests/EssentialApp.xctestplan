@@ -1,0 +1,18 @@
+{
+  "configurations" : [
+    {
+      "id" : "05F2DC6F-6F20-48D8-8312-158CF205DF1B",
+      "name" : "Configuration",
+      "options" : {
+        "testExecutionOrdering" : "random"
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+
+  ],
+  "version" : 1
+}
