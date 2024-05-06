@@ -20,6 +20,7 @@
 		23AD616D2BE93AF10037AECE /* FeedLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AD616C2BE93AF10037AECE /* FeedLoaderWithFallbackComposite.swift */; };
 		23AD616F2BE93CFB0037AECE /* FeedImageDataLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AD616E2BE93CFB0037AECE /* FeedImageDataLoaderWithFallbackCompositeTests.swift */; };
 		23AD61712BE94A170037AECE /* FeedImageDataLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AD61702BE94A170037AECE /* FeedImageDataLoaderWithFallbackComposite.swift */; };
+		23AD61742BE94AFB0037AECE /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AD61732BE94AFB0037AECE /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		23AD616C2BE93AF10037AECE /* FeedLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 		23AD616E2BE93CFB0037AECE /* FeedImageDataLoaderWithFallbackCompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderWithFallbackCompositeTests.swift; sourceTree = "<group>"; };
 		23AD61702BE94A170037AECE /* FeedImageDataLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
+		23AD61732BE94AFB0037AECE /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 		23AD61482BE8EDB90037AECE /* EssentialAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				23AD61722BE94AC00037AECE /* Helpers */,
 				23AD616B2BE92A0B0037AECE /* EssentialApp.xctestplan */,
 				23AD61492BE8EDB90037AECE /* FeedLoaderWithFallbackCompositeTests.swift */,
 				23AD616E2BE93CFB0037AECE /* FeedImageDataLoaderWithFallbackCompositeTests.swift */,
@@ -152,6 +155,14 @@
 				23AD61642BE8F29F0037AECE /* EssentialFeediOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		23AD61722BE94AC00037AECE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				23AD61732BE94AFB0037AECE /* XCTestCase+MemoryLeakTracking.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,6 +310,7 @@
 			files = (
 				23AD616F2BE93CFB0037AECE /* FeedImageDataLoaderWithFallbackCompositeTests.swift in Sources */,
 				23AD614A2BE8EDB90037AECE /* FeedLoaderWithFallbackCompositeTests.swift in Sources */,
+				23AD61742BE94AFB0037AECE /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
