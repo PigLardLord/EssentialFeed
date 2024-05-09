@@ -6,20 +6,21 @@
 
 import Foundation
 import EssentialFeed
+import EssentialFeediOS
 
-final class FeedImageDataLoaderPresentationAdapter<View: FeedImageView, Image>: FeedImageCellControllerDelegate where View.Image == Image {
+public final class FeedImageDataLoaderPresentationAdapter<View: FeedImageView, Image>: FeedImageCellControllerDelegate where View.Image == Image {
     private let model: FeedImage
     private let imageLoader: FeedImageDataLoader
     private var task: FeedImageDataLoaderTask?
 
     var presenter: FeedImagePresenter<View, Image>?
 
-    init(model: FeedImage, imageLoader: FeedImageDataLoader) {
+    public init(model: FeedImage, imageLoader: FeedImageDataLoader) {
         self.model = model
         self.imageLoader = imageLoader
     }
 
-    func didRequestImage() {
+    public func didRequestImage() {
         presenter?.didStartLoadingImageData(for: model)
 
         let model = self.model
@@ -34,7 +35,7 @@ final class FeedImageDataLoaderPresentationAdapter<View: FeedImageView, Image>: 
         }
     }
 
-    func didCancelImageRequest() {
+    public func didCancelImageRequest() {
         task?.cancel()
     }
 }
