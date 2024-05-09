@@ -361,7 +361,7 @@ final class FeedUIIntegrationTests: XCTestCase {
     }
 }
 
-private extension FeedImageCell {
+extension FeedImageCell {
     var isShowingLocation: Bool {
         return !locationContainer.isHidden
     }
