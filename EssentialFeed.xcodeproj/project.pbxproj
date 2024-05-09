@@ -384,17 +384,17 @@
 			isa = PBXGroup;
 			children = (
 				236C31922AE985520009A0EF /* README.md */,
-				236C31912AE833B60009A0EF /* CI.yml */,
-				2336B63D2AE6D76D00B29183 /* CI_macOS.xctestplan */,
 				2323BBB82B8BC5350078DDF9 /* CI_iOS.xctestplan */,
+				2336B63D2AE6D76D00B29183 /* CI_macOS.xctestplan */,
+				236C31912AE833B60009A0EF /* CI.yml */,
 				239A1B4B2AD700EB006C98E2 /* EssentialFeed */,
-				239A1B552AD700EB006C98E2 /* EssentialFeedTests */,
 				2336B61C2AE5871700B29183 /* EssentialFeedAPIEndToEndTests */,
 				23E11FAB2B7BE94D00FF17E0 /* EssentialFeedCacheIntegrationTests */,
 				2323BBA32B8BC3090078DDF9 /* EssentialFeediOS */,
 				2323BBAD2B8BC30A0078DDF9 /* EssentialFeediOSTests */,
-				239A1B4A2AD700EB006C98E2 /* Products */,
+				239A1B552AD700EB006C98E2 /* EssentialFeedTests */,
 				23A475622B94DAA90051FDA8 /* Frameworks */,
+				239A1B4A2AD700EB006C98E2 /* Products */,
 			);
 			sourceTree = "<group>";
 		};

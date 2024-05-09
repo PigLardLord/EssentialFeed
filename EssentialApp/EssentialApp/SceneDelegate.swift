@@ -12,16 +12,15 @@ import EssentialFeediOS
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
-    let localStoreURL = NSPersistentContainer
-        .defaultDirectoryURL()
-        .appendingPathComponent("feed-store.sqlite")
-    
     private lazy var httpClient: HttpClient = {
         URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     }()
     
     private lazy var store: FeedStore & FeedImageDataStore = {
-        try! CoreDataFeedStore(storeUrl: localStoreURL)
+        try! CoreDataFeedStore(
+            storeUrl: NSPersistentContainer
+                .defaultDirectoryURL()
+                .appendingPathComponent("feed-store.sqlite"))
     }()
 
     convenience init(httpClient: HttpClient, store: FeedStore & FeedImageDataStore) {
@@ -39,9 +38,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func configureWindow() {
         let remoteURL = URL(string: "https://ile-api.essentialdeveloper.com/essential-feed/v1/feed")!
         
-        let remoteClient = makeRemoteClient()
-        let remoteFeedLoader = RemoteFeedLoader(client: remoteClient, url: remoteURL)
-        let remoteImageLoader = RemoteFeedImageDataLoader(client: remoteClient)
+        let remoteFeedLoader = RemoteFeedLoader(client: httpClient, url: remoteURL)
+        let remoteImageLoader = RemoteFeedImageDataLoader(client: httpClient)
         
         let localFeedLoader = LocalFeedLoader(store: store, currentDate: Date.init)
         let localImageLoader = LocalFeedImageDataLoader(store: store)
@@ -63,9 +61,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 )
             )
         )
-    }
-    
-    func makeRemoteClient() -> HttpClient {
-        return httpClient
     }
 }
