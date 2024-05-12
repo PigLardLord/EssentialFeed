@@ -9,10 +9,25 @@
     }
   ],
   "defaultOptions" : {
-
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:EssentialApp.xcodeproj",
+          "identifier" : "23AD612E2BE8EDB60037AECE",
+          "name" : "EssentialApp"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
   },
   "testTargets" : [
-
+    {
+      "target" : {
+        "containerPath" : "container:EssentialApp.xcodeproj",
+        "identifier" : "23AD61442BE8EDB90037AECE",
+        "name" : "EssentialAppTests"
+      }
+    }
   ],
   "version" : 1
 }
